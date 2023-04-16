@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dynamic Webpage Example</title>
+  <title>NajirCollection</title>
   <style>
     form {
       display: flex;
@@ -59,27 +59,27 @@
   <form>
     <label for="descriptionBox">Description </label>
     <textarea id="descriptionBox" placeholder="Enter your description here"></textarea><br>
-        <label for="h5-input">Precedent </label>
+        <label for="h5-input">Precedent(h5) &amp;lt;br&amp;gt; </label>
     <textarea id="h5-input" placeholder="Enter your description here"></textarea>
     <br>
-    <label for="h2-input">Case Name</label>
-    <input type="text" id="h2-input"><br>
-     <label for="h3-input">Applicant</label>
-    <input type="text" id="h3-input"><br>
-       <label for="h4-input">Opponent</label>
-    <input type="text" id="h4-input"><br>
-    <label for="h6-input">Year</label>
-    <input type="text" id="h6-input"><br>
-    <label for="h7-input">Volume</label>
-    <input type="text" id="h7-input"><br>
-    <label for="h8-input">Decision No.</label>
-    <input type="text" id="h8-input"><br>
-    <label for="h9-input">Hyperlink</label>
-    <input type="text" id="h9-input"><br>
-    <label for="h10-input">Criticism </label>
+    <label for="h10-input">Criticism (h10) &amp;lt;br&amp;gt;</label>
     <textarea id="h10-input" placeholder="Enter your criticism here"></textarea>
-    <br> 
-    <label for="h11-input">Keywords</label>
+    <br>
+    <label for="h2-input">Case Name(h2)</label>
+    <input type="text" id="h2-input"><br>
+     <label for="h3-input">Applicant(h3)</label>
+    <input type="text" id="h3-input"><br>
+       <label for="h4-input">Opponent(h4)</label>
+    <input type="text" id="h4-input"><br>
+    <label for="h6-input">Year(h6)</label>
+    <input type="text" id="h6-input"><br>
+    <label for="h7-input">Volume(h7)</label>
+    <input type="text" id="h7-input"><br>
+    <label for="h8-input">Decision No.(h8)</label>
+    <input type="text" id="h8-input"><br>
+    <label for="h9-input">Hyperlink(h9)</label>
+    <input type="text" id="h9-input"><br>
+    <label for="h11-input">Keywords(h11)</label>
     <input type="text" id="h11-input"><br>
     <button type="button" id="submit-button">Submit</button>
     <button type="button" id="copy-button">Copy to Clipboard</button>
@@ -94,7 +94,6 @@
   </div>
   <script>
     const h5Input = document.getElementById("h5-input");
-    const h5Element = document.getElementById("h5-element");
     const h2Input = document.getElementById("h2-input");
     const h3Input = document.getElementById("h3-input");
     const h4Input = document.getElementById("h4-input");
@@ -109,12 +108,13 @@
     const undoButton = document.getElementById("undo-button");
     const redoButton = document.getElementById("redo-button");
     const codeElement = document.getElementById("code");
-    let history = [{ code: codeElement.innerHTML,h5: h5Input.value, h3: h3Input.value, h4: h4Input.value,  h6: h6Input.value, h7: h7Input.value, h8: h8Input.value, h9: h9Input.value, h10: h10Input.value, h11: h11Input.value }];
+    let history = [{ code: codeElement.innerHTML,h5: h5Input.value,  h10: h10Input.value, h2:h2Input.value, h3: h3Input.value, h4: h4Input.value,  h6: h6Input.value, h7: h7Input.value, h8: h8Input.value, h9: h9Input.value, h11: h11Input.value }];
     let current = 0;
 
-function updateInputs(code, h5, h3, h4, h6, h7, h8, h9, h10) {
+function updateInputs(code, h5, h10, h2, h3, h4, h6, h7, h8, h9, h11) {
   codeElement.innerHTML = code;
   h5Input.value = h5;
+  h10Input.value = h10;
   h2Input.value = h2;
   h3Input.value = h3;
   h4Input.value = h4;
@@ -122,21 +122,19 @@ function updateInputs(code, h5, h3, h4, h6, h7, h8, h9, h10) {
   h7Input.value = h7;
   h8Input.value = h8;
   h9Input.value = h9;
-  h10Input.value = h10;
   h11Input.value = h11;
 }
 
-function updateHistory(newCode, newH5, newH2,  newH3, newH4, newH6, newH7, newH8, newH9, newH10, newH11) {
+function updateHistory(newCode, newH5, newH10, newH2, newH3, newH4, newH6, newH7, newH8, newH9, newH11) {
   history = history.slice(0, current + 1);
-  history.push({ code: newCode, h5: newH5, h2:newH2, h3: newH3, h4: newH4, h5: newH5, h6: newH6, h7: newH7, h8: newH8, h9: newH9, h10: newH10, h11: newH11});
+  history.push({ code: newCode, h5: newH5, h10: newH10, h2:newH2, h3: newH3, h4: newH4, h6: newH6, h7: newH7, h8: newH8, h9: newH9, h11: newH11});
   current = history.length - 1;
   undoButton.disabled = false;
   redoButton.disabled = true;
 }
 
 generateButton.addEventListener("click", () => {
-  const newCode = `<code>   &lt;b&gt;${h8Input.value}&lt;/b&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;u&gt;Precedents:&lt;/u&gt; ${h5Input.value}&lt;br&gt;&lt;u&gt;Criticism:&lt;/u&gt; ${h10Input.value}&lt;/td&gt;&lt;td&gt;${h3Input.value}&lt;br&gt;विरूद्ध&lt;br&gt;${h4Input.value}&lt;br&gt;${h2Input.value},&lt;a href="${h9Input.value}"; target=";_blank";&gt;NKP:${h6Input.value}.${h7Input.value}.${h8Input.value}&lt;/a&gt;&lt;br&gt;&lt;u&gt;Keywords:&lt;/u&gt;${h11Input.value}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;
-</code>`; 
+  const newCode = `<code>   &lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&lt;u&gt;${h8Input.value}&lt;/u&gt;&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;${h2Input.value}&lt;a&#x20;&#x20;href="${h9Input.value}"&#x20;&#x20;target="_blank"&gt;&#x20;&#x20;NKP:${h6Input.value}.${h7Input.value}.${h8Input.value}&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;${h3Input.value}&lt;br&gt;विरूद्ध&lt;br&gt;${h4Input.value}&lt;tr&gt;&lt;td&gt;&lt;b&gt;&lt;u&gt;Precedents:&lt;/u&gt;&lt;/b&gt;&#x20;&#x20;${h5Input.value}&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&lt;u&gt;Criticism:&lt;/u&gt;&lt;/b&gt;&#x20;&#x20;${h10Input.value}&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&lt;u&gt;Keywords:&lt;/u&gt;&lt;/b&gt;&#x20;&#x20;${h11Input.value}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; </code>`; 
  
 copyButton.addEventListener("click", () => {
         const codeElement = document.getElementById("code");
@@ -151,6 +149,7 @@ copyButton.addEventListener("click", () => {
           });
         });
   const newH5 = h5Input.value;
+  const newH10 = h10Input.value;
   const newH2 = h2Input.value;
   const newH3 = h3Input.value;
   const newH4 = h4Input.value;
@@ -158,18 +157,17 @@ copyButton.addEventListener("click", () => {
   const newH7 = h7Input.value;
   const newH8 = h8Input.value;
   const newH9 = h9Input.value;
-  const newH10 = h10Input.value;
   const newH11 = h11Input.value;
  
-  updateHistory(newCode, newH5, newH2, newH3, newH4, newH6, newH7, newH8, newH9, newH10, newH11);
-  updateInputs(newCode, newH5, newH2, newH3, newH4, newH6, newH7, newH8, newH9, newH10, newH11);
+  updateHistory(newCode, newH5, newH10, newH2, newH3, newH4, newH6, newH7, newH8, newH9, newH11);
+  updateInputs(newCode, newH5, newH10, newH2, newH3, newH4, newH6, newH7, newH8, newH9, newH11);
 });
 
 undoButton.addEventListener("click", () => {
   if (current > 0) {
     current--;
     const prevState = history[current];
-    updateInputs(prevState.code, prevState.h5, prevState.h3, prevState.h4,  prevState.h6, prevState.h7, prevState.h8, prevState.h9, prevState.h10, prevState.h11);
+    updateInputs(prevState.code, prevState.h5, prevState.h10,  prevState.h2, prevState.h3, prevState.h4, prevState.h6, prevState.h7, prevState.h8, prevState.h9, prevState.h11);
     undoButton.disabled = current === 0;
     redoButton.disabled = false;
   }
@@ -179,7 +177,7 @@ redoButton.addEventListener("click", () => {
   if (current < history.length - 1) {
     current++;
     const nextState = history[current];
-    updateInputs(nextState.code, nextState.h5, nextState.h3, nextState.h4,  nextState.h6, nextState.h7, nextState.h8, nextState.h9, nextState.h10, nextState.h11);
+    updateInputs(nextState.code, nextState.h5, nextState.h10, nextState.h2, nextState.h3, nextState.h4, nextState.h6, nextState.h7, nextState.h8, nextState.h9, nextState.h11);
     undoButton.disabled = false;
     redoButton.disabled = current === history.length - 1;
   }
@@ -205,11 +203,20 @@ descriptionBox.addEventListener("change", () => {
   if (lines.length >= 2) {
     h5Input.value = lines[0].trim();
     h10Input.value = lines[1].trim();
+    h2Input.value = lines[2].trim();
+    h3Input.value = lines[3].trim();
+    h4Input.value = lines[4].trim();
+    h6Input.value = lines[5].trim();
+    h7Input.value = lines[6].trim();
+    h8Input.value = lines[7].trim();
+    h9Input.value = lines[8].trim();
+    h11Input.value = lines[9].trim();
+    
   }
 });
   </script>
   <section id="parkingsection">
-    <b>9982</b><table><tr><td><u>Precedents:</u> 1. PIL ले सार्थक सम्बन्ध र तात्विक सरोकार मात्र नभई गहिरो अध्ययन मनन र विश्‍लेषण पनि खोज्ने।<br> 2. दायित्व सुम्पिएका कुनै पनि अधिकारी कहाँ जाँदै नगई र उनीहरूलाई कर्तव्य पालनतर्फ सचेतसम्म नगराई PIL ल्याउनु उचित नहुने। <br>3. कुनै कानून विद्यमान छ भने त्यसको पूर्ण पालना गरिनु पर्छ। कानून समय सापेक्ष छैन भने खारेज वा संशोधन गरिनुपर्छ । <br>4. कुनै कानून विरूद्धको कार्य चाहे व्यक्तिगत अग्रसरतामा गरिएको होस् वा सामूहिकरूपमा गैरकानूनी नै हुन्छ। कुनै पनि बहानामा कानून विरूद्धको कार्य स्वीकार्य नहुने । <br>5. सांस्कृतिकरूपमा नेपाल विभिन्‍न जातजाति र वर्गमा चलेको प्रथा परम्पराहरूको समन्वयात्मक अन्तरघुलन हो।<br><br><u>Criticism:</u> 1.intention of court to control the flow of PIL. <br> 2.paradigm shift in PIL.</td><td>Adv. Achyut Prasad Kharel<br>विरूद्ध<br>OPMCM et.al<br>Mandamus,<a href="https://nkp.gov.np/full_detail/9033"; target=";_blank";>NKP:2075.3.9982</a><br><u>Keywords:</u>/pil/ls%/ool/culturalnepal/chauri/yak%/<br>/tncofpil/wq/doi/achyut/</td></tr></table><br>
+    <table><tr><td><b><u>9982</u></b></td></tr><tr><td>Mandamus<a  href="https://nkp.gov.np/full_detail/9033"  target="_blank">  NKP:2075.3.9982</a></td></tr><tr><td>Adv. Achyut Prasad Kharel<br>विरूद्ध<br>OPMCM et.al<tr><td><b><u>Precedents:</u></b>  1. PIL ले सार्थक सम्बन्ध र तात्विक सरोकार मात्र नभई गहिरो अध्ययन मनन र विश्‍लेषण पनि खोज्ने।<br> 2. दायित्व सुम्पिएका कुनै पनि अधिकारी कहाँ जाँदै नगई र उनीहरूलाई कर्तव्य पालनतर्फ सचेतसम्म नगराई PIL ल्याउनु उचित नहुने।<br> 3. कुनै कानून विद्यमान छ भने त्यसको पूर्ण पालना गरिनु पर्छ। कानून समय सापेक्ष छैन भने खारेज वा संशोधन गरिनुपर्छ ।<br> 4. कुनै कानून विरूद्धको कार्य चाहे व्यक्तिगत अग्रसरतामा गरिएको होस् वा सामूहिकरूपमा गैरकानूनी नै हुन्छ। कुनै पनि बहानामा कानून विरूद्धको कार्य स्वीकार्य नहुने ।<br> 5. सांस्कृतिकरूपमा नेपाल विभिन्‍न जातजाति र वर्गमा चलेको प्रथा परम्पराहरूको समन्वयात्मक अन्तरघुलन हो।</td></tr><tr><td><b><u>Criticism:</u></b>  1.intention of court to control the flow of PIL.<br>2.paradigm shift in PIL.</td></tr><tr><td><b><u>Keywords:</u></b>  /pil/ls%/ool/culturalnepal/chauri/yak%/tncofpil/wq/doi/achyut/</td></tr></table>
   </section>
   <section id="abbrsection">
   <p>ls:locus standii (हकदैया)</p>
